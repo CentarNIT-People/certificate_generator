@@ -1,0 +1,3 @@
+docxtpl
+customtkinter
+docx2pdf
