@@ -2,7 +2,6 @@ import os
 import convertapi
 from os import walk
 from docxtpl import DocxTemplate
-from pdf2image import convert_from_path
 
 def convert_to_pdf():
     os.chdir("results")
@@ -13,19 +12,6 @@ def convert_to_pdf():
                 'File': file
             }, from_format = 'docx').save_files('../pdf')
     os.chdir("..")
-
-def convert_to_image():
-    f = []
-    for (_, _, filenames) in walk("./pdf"):
-        f.extend(filenames)
-        break
-
-    for x in f:
-        if x.endswith(".pdf"):
-            pages = convert_from_path(f'./files/{x}')
-
-            for i in range(len(pages)):
-                pages[i].save(f'./results/{str(x)}' +'.jpg', 'JPEG')
 
 def excecute(list_of_names, course_name, group_name, group_id, date):
     for index, name in enumerate(list_of_names):
@@ -47,9 +33,7 @@ def excecute(list_of_names, course_name, group_name, group_id, date):
         doc.save(f"{file_name}.docx")
         os.chdir("..")
     convert_to_pdf()
-    convert_to_image()
     return "Done"
 
 
 convert_to_pdf()
-convert_to_image()
