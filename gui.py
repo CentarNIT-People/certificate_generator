@@ -4,13 +4,13 @@ from main import excecute
 
 sg.theme('DarkBlue3')
 layout = [  
-            [sg.Multiline(size=(30, 10), key='textbox', font=('Helvetica', 20))],
-            [sg.InputText('', size=(30, 4), key='course_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Course Name')],
-            [sg.InputText('', size=(30, 4), key='group_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group Name')],
-            [sg.InputText('', size=(30, 4), key='group_id', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group ID')],
-            [sg.InputText('', size=(30, 4), key='group_id', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Date')],
-            [sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
-        ]
+    [sg.Multiline(size=(30, 10), key='textbox', font=('Helvetica', 20))],
+    [sg.InputText('', size=(30, 4), key='course_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Course Name')],
+    [sg.InputText('', size=(30, 4), key='group_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group Name')],
+    [sg.InputText('', size=(30, 4), key='group_id', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group ID')],
+    [sg.InputText('', size=(30, 4), key='date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Date')],
+    [sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
+]
 
 window = sg.Window('Window Title', layout)
 while True:
