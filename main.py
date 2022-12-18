@@ -11,11 +11,16 @@ def excecute(list_of_names, course_name, group_name, group_id):
             "id" :f"1.{index+1}",
             "course_name" : course_name,
             "group_name" : group_name,
-            "group_id" : group_id
+            "group_id" : group_id,
+            "date": "23.12.2022"
+            # TODO: date of issue
+            # TODO: image
+            # TODO: color
         }
         doc.render(context)
         os.chdir("results")
         doc.save(f"{file_name}.docx")
-        convert(f"{file_name}.docx", "output.pdf")
+        convert(f"{file_name}.docx")
         os.chdir("..")
-    return "Done"
+    quit()
+
