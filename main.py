@@ -1,16 +1,15 @@
 import os
-import convertapi
 from docxtpl import DocxTemplate
+from docx2pdf import convert
 
-# def convert_to_pdf():
-#     os.chdir("results")
-#     for file in os.listdir():
-#         if file.endswith(".docx"):
-#             convertapi.api_secret = '59fywzlChxa3iNc7'
-#             convertapi.convert('pdf', {
-#                 'File': file
-#             }, from_format = 'docx').save_files('../pdf')
-#     os.chdir("..")
+def convert_to_pdf():
+    os.chdir("results")
+    filenames = os.listdir()
+    os.chdir("..")
+    for filename in filenames:
+        if filename.endswith(".docx"):
+            convert(filename, f"pdf/{filename}.pdf")
+    
 
 def excecute(list_of_names, course_name, group_name, group_id, date):
     # template = input("Enter template name: ")
