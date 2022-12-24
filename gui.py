@@ -20,6 +20,7 @@ while True:
         lastnames = [values['textbox'].split()[x] for x in range(len(values['textbox'].split())) if x % 2 != 0]
         full_names = [firstnames[x] + " " + lastnames[x] for x in range(len(firstnames))]
         print(excecute(full_names, values['course_name'], values['group_name'], values['group_id'], values['date']))
+        break
     elif event == sg.WIN_CLOSED:
         break
     else:

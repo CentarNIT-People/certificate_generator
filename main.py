@@ -35,5 +35,3 @@ def excecute(list_of_names, course_name, group_name, group_id, date):
     convert_to_pdf()
     return "Done"
 
-
-convert_to_pdf()
