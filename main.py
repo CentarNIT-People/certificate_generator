@@ -7,8 +7,25 @@
 import os
 from pathlib import Path
 from docx2pdf import convert
-from docxtpl import DocxTemplate
 from pdf2image import convert_from_path
+from docxtpl import DocxTemplate
+
+def parse(*args):
+    for index, name in enumerate(args[0]):
+        file_name = str(name).replace(" ", "_")
+        doc = DocxTemplate("./templates/gimnazija_python.docx")
+        context = { 
+            "name" : name,
+            "id" :f"1.{index+1}",
+            "course_name" : args[1],
+            "group_name" : args[2],
+            "group_id" : args[3],
+            "date": args[4]
+        }
+        doc.render(context)
+        os.chdir("results")
+        doc.save(f"{file_name}.docx")
+        os.chdir("..")
 
 def convert_to_image():
     pdf_dir = Path("pdf")
@@ -26,23 +43,9 @@ def convert_to_pdf():
             convert(filename, f"pdf/{filename}.pdf")
     
 
-def excecute(list_of_names, course_name, group_name, group_id, date):
+def excecute(*args):
     # template = input("Enter template name: ")
-    for index, name in enumerate(list_of_names):
-        file_name = str(name).replace(" ", "_")
-        doc = DocxTemplate("./templates/gimnazija_python.docx")
-        context = { 
-            "name" : name,
-            "id" :f"1.{index+1}",
-            "course_name" : course_name,
-            "group_name" : group_name,
-            "group_id" : group_id,
-            "date": date
-        }
-        doc.render(context)
-        os.chdir("results")
-        doc.save(f"{file_name}.docx")
-        os.chdir("..")
+    parse(*args)
     convert_to_pdf()
     convert_to_image()
     return "Done"
