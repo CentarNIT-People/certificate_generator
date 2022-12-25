@@ -6,9 +6,11 @@
 
 import os
 from pathlib import Path
+from docx import Document
 from docx2pdf import convert
-from pdf2image import convert_from_path
+from docx.shared import Inches
 from docxtpl import DocxTemplate
+from pdf2image import convert_from_path
 
 def parse(*args):
     for index, name in enumerate(args[0]):
@@ -25,6 +27,9 @@ def parse(*args):
         doc.render(context)
         os.chdir("results")
         doc.save(f"{file_name}.docx")
+        doc_new = Document(f"{file_name}.docx")
+        doc_new.add_picture("./utilities/logo.png", width=Inches(30), height=Inches(10))
+        doc_new.save(f"{file_name}.docx")
         os.chdir("..")
 
 def convert_to_image():

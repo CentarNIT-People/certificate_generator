@@ -1,8 +1,9 @@
+from docx import Document
 from docx.shared import Inches
 from docxtpl import DocxTemplate, InlineImage
 
-doc = DocxTemplate("./templates/gimnazija_python.docx")
-image = InlineImage(doc, './utilities/logo.png', width=Inches(30), height=Inches(10))
+doc = DocxTemplate("./templates/nit_python.docx")
+image = InlineImage(doc, 'utilities/logo.png', width=Inches(30), height=Inches(10))
 context = {
     "name" : "Nikola",
     "id" : "1.1",
