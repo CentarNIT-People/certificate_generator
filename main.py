@@ -13,7 +13,7 @@ from docxtpl import DocxTemplate
 def parse(*args):
     for index, name in enumerate(args[0]):
         file_name = str(name).replace(" ", "_")
-        doc = DocxTemplate("./templates/gimnazija_python.docx")
+        doc = DocxTemplate("./templates/nit_python.docx")
         context = { 
             "name" : name,
             "id" :f"1.{index+1}",
