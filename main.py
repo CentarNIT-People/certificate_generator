@@ -28,7 +28,7 @@ def parse(*args):
         os.chdir("results")
         doc.save(f"{file_name}.docx")
         doc_new = Document(f"{file_name}.docx")
-        doc_new.add_picture("./utilities/logo.png", width=Inches(30), height=Inches(10))
+        doc_new.add_picture("./utilities/logo.png")
         doc_new.save(f"{file_name}.docx")
         os.chdir("..")
 
