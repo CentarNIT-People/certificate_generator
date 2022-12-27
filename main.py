@@ -42,8 +42,8 @@ def convert_to_pdf():
 
 def excecute(values: dict):
     parse(values)
-    # convert_to_pdf()
-    # convert_to_image()
+    convert_to_pdf()
+    convert_to_image()
     return "Done"
 
 if __name__ == "__main__":
