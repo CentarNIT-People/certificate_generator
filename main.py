@@ -1,36 +1,28 @@
-# TODO: add feature to insert image
-# TODO: add more templates
-# TODO: add more option
+# DONE: add feature to insert image   
 # TODO: style of certificate
-# TODO: make it so that it doesn't break after the process is done
+# DONE: make it so that it doesn't break after the process is done
 
 import os
 from pathlib import Path
-from docx import Document
 from docx2pdf import convert
-from docx.shared import Inches
 from docxtpl import DocxTemplate
 from pdf2image import convert_from_path
 
-def parse(*args):
-    for index, name in enumerate(args[0]):
+def parse(values: dict):
+    for index, name in enumerate(values["full_names"]):
         file_name = str(name).replace(" ", "_")
         doc = DocxTemplate("./templates/nit_python.docx")
         context = { 
             "name" : name,
             "id" :f"1.{index+1}",
-            "course_name" : args[1],
-            "group_name" : args[2],
-            "group_id" : args[3],
-            "date": args[4]
+            "course_name" : values["course_name"],
+            "group_name" : values["group_name"],
+            "group_id" : values["group_id"],
+            "date": values["date"]
         }
         doc.render(context)
-        os.chdir("results")
-        doc.save(f"{file_name}.docx")
-        doc_new = Document(f"{file_name}.docx")
-        doc_new.add_picture("./utilities/logo.png")
-        doc_new.save(f"{file_name}.docx")
-        os.chdir("..")
+        doc.replace_pic("logo.png", "utilities/logo.png")
+        doc.save(f"results/{file_name}.docx")
 
 def convert_to_image():
     pdf_dir = Path("pdf")
@@ -48,9 +40,14 @@ def convert_to_pdf():
             convert(filename, f"pdf/{filename}.pdf")
     
 
-def excecute(*args):
-    # template = input("Enter template name: ")
-    parse(*args)
-    convert_to_pdf()
-    convert_to_image()
+def excecute(values: dict):
+    parse(values)
+    # convert_to_pdf()
+    # convert_to_image()
     return "Done"
+
+if __name__ == "__main__":
+    try:
+        os.system("python3 gui.py")
+    except:
+        os.system("python gui.py")
