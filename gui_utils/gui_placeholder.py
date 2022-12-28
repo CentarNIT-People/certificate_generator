@@ -1,5 +1,3 @@
-
-
 def setPlaceholder(widget, placeholderText):
     """
     For wx/qt/web, enable the placeholder setting.

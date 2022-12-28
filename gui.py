@@ -1,5 +1,5 @@
-import PySimpleGUI as sg
 from main import excecute
+import PySimpleGUI as sg, os
 from gui_utils.gui_placeholder import setPlaceholder
 
 sg.theme('DarkBlue3')
@@ -12,9 +12,8 @@ layout = [
     [sg.InputText('', size=(100, 4), key='Group Name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[1])],
     [sg.InputText('', size=(100, 4), key='Group Number', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[2])],
     [sg.InputText('', size=(100, 4), key='Group ID', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[3])],
-    [sg.InputText('', size=(100, 4), key='Certificate Logo', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[4])],
     [sg.InputText('', size=(100, 4), key='Date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[5])],
-    [sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
+    [sg.FileBrowse('Browse Logo', initial_folder=os.getcwd(), key='Certificate Logo', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[4]), sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
 ]
 
 
@@ -30,11 +29,12 @@ while True:
         full_names = [firstnames[x] + " " + lastnames[x] for x in range(len(firstnames))]
         values = {
             "full_names": full_names,
-            "course_name": values['course_name'],
-            "group_name": values['group_name'],
-            "group_number": values['group_number'],
-            "group_id": values['group_id'],
-            "date": values['date']
+            "course_name": values['Course Name'],
+            "group_name": values['Group Name'],
+            "group_number": values['Group Number'],
+            "group_id": values['Group ID'],
+            "logo": values['Certificate Logo'],
+            "date": values['Date'],
         }
         if values['logo'] != '':
             values['logo'] = values['logo']

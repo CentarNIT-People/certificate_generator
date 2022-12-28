@@ -20,8 +20,8 @@ def parse(values: dict):
             "date": values["date"]
         }
         doc.render(context)
-        doc.replace_pic("logo.png", "utilities/logo2.png")
-        doc.save(f"results/{file_name}.docx")
+        doc.replace_pic("logo.png", values["logo"])
+        doc.save(f"results/docx/{file_name}.docx")
 
 def convert_to_image():
     pdf_dir = Path("pdf")
@@ -31,7 +31,7 @@ def convert_to_image():
             image.save(f"images/{file.stem}_{index}.png", "PNG")
 
 def convert_to_pdf():
-    os.chdir("results")
+    os.chdir("results/docx")
     filenames = os.listdir()
     os.chdir("..")
     for filename in filenames:
