@@ -12,7 +12,7 @@ placeholders in Jinja2 like style.
 Clone the project
 
 ```bash
-  git clone https://
+  git clone https://https://github.com/CentarNIT-People/certificate_generator.git
 ```
 
 Go to the project directory
