@@ -1,18 +1,26 @@
 import PySimpleGUI as sg
 from main import excecute
+from gui_utils.gui_placeholder import setPlaceholder
 
 sg.theme('DarkBlue3')
+
+placeholders = ["Course Name", "Group Name", "Group Number", "Group ID", "Certificate Logo", "Date" ]
+
 layout = [  
-    [sg.Multiline(size=(30, 10), key='textbox', font=('Helvetica', 20))],
-    [sg.InputText('', size=(30, 4), key='course_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Course Name')],
-    [sg.InputText('', size=(30, 4), key='group_name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group Name')],
-    [sg.InputText('', size=(30, 4), key='group_number', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group Number')],
-    [sg.InputText('', size=(30, 4), key='group_id', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Group ID')],
-    [sg.InputText('', size=(30, 4), key='date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Date')],
+    [sg.Multiline(size=(100, 12), key='textbox', font=('Helvetica', 20))],
+    [sg.InputText('', size=(100, 4), key='Course Name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[0])],
+    [sg.InputText('', size=(100, 4), key='Group Name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[1])],
+    [sg.InputText('', size=(100, 4), key='Group Number', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[2])],
+    [sg.InputText('', size=(100, 4), key='Group ID', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[3])],
+    [sg.InputText('', size=(100, 4), key='Certificate Logo', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[4])],
+    [sg.InputText('', size=(100, 4), key='Date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[5])],
     [sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
 ]
 
-window = sg.Window('Window Title', layout, finalize=True)
+
+window = sg.Window('Window Title', layout, finalize=True, size=(800, 600))
+for placeholder in placeholders:
+    setPlaceholder(window[placeholder], placeholder + ":")
 
 while True:
     event, values = window.read()
@@ -28,6 +36,10 @@ while True:
             "group_id": values['group_id'],
             "date": values['date']
         }
+        if values['logo'] != '':
+            values['logo'] = values['logo']
+        else:
+            values['logo'] = 'logo.png'
         print(excecute(values))
     elif event == sg.WIN_CLOSED:
         break

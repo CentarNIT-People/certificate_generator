@@ -1,6 +1,5 @@
-# DONE: add feature to insert image   
 # TODO: style of certificate
-# DONE: make it so that it doesn't break after the process is done
+# TODO: add logo
 
 import os
 from pathlib import Path
@@ -12,16 +11,16 @@ def parse(values: dict):
     for index, name in enumerate(values["full_names"]):
         file_name = str(name).replace(" ", "_")
         doc = DocxTemplate("./templates/nit_python.docx")
-        context = { 
+        context = {
             "name" : name,
-            "id" :f"1.{index+1}",
+            "id" :f"{values['group_number']}.{index+1}",
             "course_name" : values["course_name"],
             "group_name" : values["group_name"],
             "group_id" : values["group_id"],
             "date": values["date"]
         }
         doc.render(context)
-        doc.replace_pic("logo.png", "utilities/logo.png")
+        doc.replace_pic("logo.png", "utilities/logo2.png")
         doc.save(f"results/{file_name}.docx")
 
 def convert_to_image():
@@ -42,8 +41,8 @@ def convert_to_pdf():
 
 def excecute(values: dict):
     parse(values)
-    convert_to_pdf()
-    convert_to_image()
+    # convert_to_pdf()
+    # convert_to_image()
     return "Done"
 
 if __name__ == "__main__":
