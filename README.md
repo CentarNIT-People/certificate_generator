@@ -12,13 +12,13 @@ placeholders in Jinja2 like style.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://https://github.com/CentarNIT-People/certificate_generator.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd certificate_generator
 ```
 
 Install dependencies
@@ -30,7 +30,7 @@ Install dependencies
 Start the server
 
 ```bash
-  python3 gui.py
+  python3 main.py
 ```
 
 Type in the full names, group name and group id of the group
