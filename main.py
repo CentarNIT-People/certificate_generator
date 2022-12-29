@@ -1,6 +1,3 @@
-# TODO: style of certificate
-# TODO: add logo
-
 import os
 from pathlib import Path
 from docx2pdf import convert
@@ -41,8 +38,8 @@ def convert_to_pdf():
 
 def excecute(values: dict):
     parse(values)
-    # convert_to_pdf()
-    # convert_to_image()
+    convert_to_pdf()
+    convert_to_image()
     return "Done"
 
 if __name__ == "__main__":

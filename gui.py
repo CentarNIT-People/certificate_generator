@@ -1,6 +1,6 @@
 from main import excecute
 import PySimpleGUI as sg, os
-from gui_utils.gui_placeholder import setPlaceholder
+from utilities.gui_utils.gui_placeholder import setPlaceholder
 
 sg.theme('DarkBlue3')
 
