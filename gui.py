@@ -4,7 +4,7 @@ from utilities.gui_utils.gui_placeholder import setPlaceholder
 
 sg.theme('DarkBlue3')
 
-placeholders = ["Course Name", "Group Name", "Group Number", "Group ID", "Certificate Logo", "Date" ]
+placeholders = ["Course Name", "Group Name", "Group Number", "Group ID", "Date", "Certificate Logo", "Certificate Template"]
 
 layout = [  
     [sg.Multiline(size=(100, 12), key='textbox', font=('Helvetica', 20))],
@@ -12,8 +12,12 @@ layout = [
     [sg.InputText('', size=(100, 4), key='Group Name', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[1])],
     [sg.InputText('', size=(100, 4), key='Group Number', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[2])],
     [sg.InputText('', size=(100, 4), key='Group ID', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[3])],
-    [sg.InputText('', size=(100, 4), key='Date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[5])],
-    [sg.FileBrowse('Browse Logo', initial_folder=os.getcwd(), key='Certificate Logo', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[4]), sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')]
+    [sg.InputText('', size=(100, 4), key='Date', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[4])],
+    [
+        sg.FileBrowse('Browse Logo', initial_folder=os.getcwd()+"/utilities/images/", key='Certificate Logo', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[5]),
+        sg.FileBrowse('Browse Template', initial_folder=os.getcwd()+"/utilities/templates/", key='Certificate Template', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip=placeholders[6]),
+        sg.Button('Generate Certificates', font=('Helvetica', 20), pad=((10, 10), (10, 10)), tooltip='Generate Certificates')
+    ]
 ]
 
 
@@ -34,6 +38,7 @@ while True:
             "group_number": values['Group Number'],
             "group_id": values['Group ID'],
             "logo": values['Certificate Logo'],
+            "template": values['Certificate Template'],
             "date": values['Date'],
         }
         if values['logo'] != '':

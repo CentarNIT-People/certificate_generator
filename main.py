@@ -7,7 +7,7 @@ from pdf2image import convert_from_path
 def parse(values: dict):
     for index, name in enumerate(values["full_names"]):
         file_name = str(name).replace(" ", "_")
-        doc = DocxTemplate("./templates/nit_python.docx")
+        doc = DocxTemplate(values["template"])
         context = {
             "name" : name,
             "id" :f"{values['group_number']}.{index+1}",
