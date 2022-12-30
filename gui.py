@@ -21,7 +21,7 @@ layout = [
 ]
 
 
-window = sg.Window('Window Title', layout, finalize=True, size=(800, 600))
+window = sg.Window('Window Title', layout, finalize=True, size=(800, 850))
 for placeholder in placeholders:
     setPlaceholder(window[placeholder], placeholder + ":")
 
