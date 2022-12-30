@@ -29,7 +29,7 @@ def convert_to_image():
             image.save(f"images/{file.stem}_{index}.png", "PNG")
 
 def convert_to_pdf():
-    os.chdir("results/docx")
+    os.chdir("results/docx/")
     filenames = os.listdir()
     os.chdir("..")
     for filename in filenames:
