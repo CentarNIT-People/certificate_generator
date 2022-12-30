@@ -43,8 +43,7 @@ while True:
         }
         if values['logo'] != '':
             values['logo'] = values['logo']
-        else:
-            values['logo'] = ''
+        values['logo'] = ''
         print(excecute(values))
     elif event == sg.WIN_CLOSED:
         break

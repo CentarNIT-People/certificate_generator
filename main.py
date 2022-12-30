@@ -17,8 +17,8 @@ def parse(values: dict):
             "date": values["date"]
         }
         doc.render(context)
-        # if values["logo"] != "":
-            # doc.replace_pic("logo.png", values["logo"])
+        if values["logo"] != "":
+            doc.replace_pic("logo.png", values["logo"])
         doc.save(f"results/docx/{file_name}.docx")
 
 def convert_to_image():
