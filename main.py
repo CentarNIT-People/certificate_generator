@@ -17,7 +17,8 @@ def parse(values: dict):
             "date": values["date"]
         }
         doc.render(context)
-        doc.replace_pic("logo.png", values["logo"])
+        # if values["logo"] != "":
+            # doc.replace_pic("logo.png", values["logo"])
         doc.save(f"results/docx/{file_name}.docx")
 
 def convert_to_image():
@@ -38,8 +39,8 @@ def convert_to_pdf():
 
 def excecute(values: dict):
     parse(values)
-    convert_to_pdf()
-    convert_to_image()
+    # convert_to_pdf()
+    # convert_to_image()
     return "Done"
 
 if __name__ == "__main__":
