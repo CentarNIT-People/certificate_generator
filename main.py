@@ -29,9 +29,10 @@ def convert_to_image():
             image.save(f"images/{file.stem}_{index}.png", "PNG")
 
 def convert_to_pdf():
-    os.chdir("results/docx/")
-    filenames = os.listdir()
-    os.chdir("..")
+    # os.chdir("results/docx")
+    # filenames = os.listdir()
+    # os.chdir("..")
+    filenames = ['Osman_Jejna.docx', 'Dženan_Demirović.docx', 'Nejla_Fijuljanin.docx', 'Vasilije_Martać.docx', 'Hanifa_Ujkanović.docx', '.DS_Store', 'Ahmed_Vučelj.docx', 'Elfić_Omer.docx', 'Vedad_Hasanović.docx', 'Amar_Mustafić.docx', 'Sara_Minić.docx', 'Sumeja_Plojović.docx', 'Amin_Kahrović.docx', 'Amin_Nicević.docx', 'Anes_Šarukić.
     for filename in filenames:
         if filename.endswith(".docx"):
             convert(filename, f"pdf/{filename}.pdf")
