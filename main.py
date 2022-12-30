@@ -45,6 +45,10 @@ def excecute(values: dict):
 
 if __name__ == "__main__":
     try:
-        os.system("python3 gui.py")
+        # os.system("python3 gui.py")
+        convert_to_pdf()
+        convert_to_image()
     except:
-        os.system("python gui.py")
+        # os.system("python gui.py")
+        convert_to_pdf()
+        convert_to_image()
