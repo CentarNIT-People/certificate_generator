@@ -40,13 +40,5 @@ def convert_to_pdf():
 def excecute(values: dict):
     parse(values)
     convert_to_pdf()
-    # convert_to_image()
+    convert_to_image()
     return "Done"
-
-# if __name__ == "__main__":
-#     try:
-#         os.system("python3 gui.py")
-#     except:
-#         os.system("python gui.py")
-
-convert_to_pdf()
