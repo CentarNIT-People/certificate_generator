@@ -1,0 +1,5 @@
+docxtpl
+pysimplegui
+docx2pdf
+poppler==21.03.0
+pdf2image==1.15.1
