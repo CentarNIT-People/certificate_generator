@@ -1,5 +1,3 @@
-# TODO: make a scanner that gets the path of the every file in the pdf directory and sends it as an attachment
-
 import smtplib, os
 from .constants import *
 from email.mime.base import MIMEBase
