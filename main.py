@@ -24,11 +24,11 @@ def parse(values: dict):
         doc.save(f"results/docx/{file_name}.docx")
 
 def convert_to_image():
-    pdf_dir = Path("pdf")
+    pdf_dir = Path("results/pdf")
     for file in pdf_dir.glob("*.pdf"):
         images = convert_from_path(file)
-        for index, image in enumerate(images):
-            image.save(f"images/{file.stem}_{index}.png", "PNG")
+        for _, image in enumerate(images):
+            image.save(f"results/images/{file.stem}.png", "PNG")
 
 def convert_to_pdf():
     os.chdir("results/docx")
