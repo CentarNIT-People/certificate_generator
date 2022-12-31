@@ -2,7 +2,7 @@ from main import excecute
 import PySimpleGUI as sg, os
 from utilities.gui_utils.gui_placeholder import setPlaceholder
 
-sg.theme('DarkBlue3')
+sg.theme('Reddit')
 
 placeholders = ["Course Name", "Group Name", "Group Number", "Group ID", "Date", "Certificate Logo", "Certificate Template"]
 
@@ -21,7 +21,7 @@ layout = [
 ]
 
 
-window = sg.Window('Window Title', layout, finalize=True, size=(800, 850))
+window = sg.Window('Window Title', layout, finalize=True, resizable=True)
 for placeholder in placeholders:
     setPlaceholder(window[placeholder], placeholder + ":")
 

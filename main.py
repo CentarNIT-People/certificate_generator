@@ -3,6 +3,8 @@ from pathlib import Path
 from docx2pdf import convert
 from docxtpl import DocxTemplate
 from pdf2image import convert_from_path
+from utilities.mail.send import send_mail, get_all_pdf_files
+from utilities.mail.constants import SENDER_EMAIL, SENDER_PASSWORD, RECIPIENTS
 
 def parse(values: dict):
     for index, name in enumerate(values["full_names"]):
@@ -41,4 +43,10 @@ def excecute(values: dict):
     parse(values)
     convert_to_pdf()
     convert_to_image()
+    send_mail(
+        SENDER_EMAIL,
+        SENDER_PASSWORD,
+        RECIPIENTS,
+        get_all_pdf_files()
+    )
     return "Done"
