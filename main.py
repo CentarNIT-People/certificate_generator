@@ -5,6 +5,29 @@ from pdf2image import convert_from_path
 from utilities.mail.send import send_mail, get_all_pdf_files
 from utilities.mail.constants import SENDER_EMAIL, SENDER_PASSWORD, RECIPIENTS
 
+def get_user_input():
+    print("1. GUI")
+    print("2. Converter")
+    mode = input("Please select the mode you want to use: ")
+    if mode == "1":
+        try:
+            os.system("python3 gui.py")
+        except:
+            os.system("python gui.py")
+    elif mode == "2":
+        print("1. Docx to PDF")
+        print("2. PDF to Images")
+        converter_mode = input("Please select the mode you want to use: ")
+        if converter_mode == "1":
+            convert_to_pdf()
+            print("Done")
+        elif converter_mode == "2":
+            convert_to_image()
+            print("Done")
+    else:
+        print("Invalid mode")
+        get_user_input()
+
 def parse(values: dict):
     for index, name in enumerate(values["full_names"]):
         file_name = str(name).replace(" ", "_")
@@ -45,3 +68,6 @@ def excecute(values: dict):
         get_all_pdf_files()
     )
     return "Done"
+
+if __name__ == "__main__":
+    get_user_input()
