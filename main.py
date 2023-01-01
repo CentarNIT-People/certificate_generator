@@ -33,12 +33,12 @@ def parse(values: dict):
         file_name = str(name).replace(" ", "_")
         doc = DocxTemplate(values["template"])
         context = {
-            "name" : name,
-            "id" :f"{values['group_number']}.{index+1}",
-            "course_name" : values["course_name"],
-            "group_name" : values["group_name"],
-            "group_id" : values["group_id"],
-            "date": values["date"]
+            "name" : name.strip(),
+            "id" :f"{values['group_number']}.{index+1}".strip(),
+            "course_name" : values["course_name"].strip(),
+            "group_name" : values["group_name"].strip(),
+            "group_id" : values["group_id"].strip(),
+            "date": values["date"].strip(),
         }
         doc.render(context)
         if values["logo"] != "":
